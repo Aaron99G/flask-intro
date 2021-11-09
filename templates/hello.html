@@ -1,0 +1,14 @@
+
+{% block title %}Hello{% endblock %}
+
+{% block content %}
+    <body>
+        <h1>Hi There!</h1>
+        <form action='/process-hello'>
+          Would you rather be complimented or insulted?
+          <input type="radio" name="niceormean" value="nice">A compliment, please!
+          <input type="radio" name="niceormean" value="mean">I'll take an insult. CLOWN.
+          <input type="submit">
+        </form>
+      </body>
+{% endblock %}

@@ -1,6 +1,6 @@
 """Greeting Flask app."""
 
-from flask import Flask, request
+from flask import Flask, request, url_for, redirect, render_template
 
 # "__name__" is a special Python variable for the name of the current module
 # Flask wants to know this to know what any imported things are relative to.
@@ -21,40 +21,14 @@ MEANNESS = [
 def start_here():
     """Home page."""
 
-    return """
-    <!doctype html>
-    <html>
-      <head>
-        <title>Start Here</title>
-      </head>
-      <body>
-        <a href="/hello">Take me to the start</a>
-      </body>
-    </html>
-    """
+    return render_template("home.html")
 
 
 @app.route('/hello')
 def say_hello():
     """Say hello and prompt for compliments."""
 
-    return """
-    <!doctype html>
-    <html>
-      <head>
-        <title>Hi There!</title>
-      </head>
-      <body>
-        <h1>Hi There!</h1>
-        <form action='/process-hello'>
-          Would you rather be complimented or insulted?
-          <input type="radio" name="niceormean" value="nice">A compliment, please!
-          <input type="radio" name="niceormean" value="mean">I'll take an insult. CLOWN.
-          <input type="submit">
-        </form>
-      </body>
-    </html>
-    """
+    return render_template("hello.html")
 
 
 @app.route('/process-hello')
@@ -225,7 +199,10 @@ def greet_person():
       </head>
       <body>
         Hi, {player}! I think you're {compliment}!
-      </body>
+      </body> <br>
+      <form action="http://localhost:5000/">
+        <button href="">Home</button>
+      </form>
     </html>
     """
 

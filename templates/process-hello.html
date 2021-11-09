@@ -1,0 +1,34 @@
+{% block title %}Process-Hello{% endblock %}
+
+    {%nice_or_mean = request.args.get("niceormean")%}
+    {%if nice_or_mean == "mean"%}
+        {% block content %}
+        <body>
+                <h2>Choose Your Insult Level:</h2>
+                <form action="/select/insult">
+                <select name="level">
+                    <option value="1">Only a little bit.</option>
+                    <option value="2">I'd like my insult to be medium-meanness.</option>
+                    <option value="3">Do your worst!</option>
+                </select>
+                <br>
+                <input type="submit">
+                </form>
+            </body>
+        {% endblock %}
+    {% elif nice_or_mean == "nice"%}
+        {% block content %}
+            <body>
+            <h2>Choose Your Compliment Level:</h2>
+            <form action="/select/compliment">
+              <select name="level">
+                <option value="1">Just say something nice.</option>
+                <option value="2">I'd like a middle-of-the-road compliment.</option>
+                <option value="3">Say something really flattering!</option>
+              </select>
+              <br>
+              <input type="submit">
+            </form>
+          </body>
+        {% endblock %}
+    
